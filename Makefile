@@ -1,11 +1,6 @@
 # Unit-testing, docs, etc.
 
 VIRTUALENV?=virtualenv
-# VIRTUALENV?=virtualenv-2.6
-EPYDOC=epydoc
-TRIAL?=trial
-PYFLAKES?=pyflakes
-PEP8?=pep8
 
 all: test flakes pep8
 
@@ -19,19 +14,16 @@ env:
 docs:
 	rm -fr docs
 	mkdir -p docs
-	$(EPYDOC) -v --html --output=docs txmongo
+	env/bin/epydoc -v --html --output=docs txmongo
 
 test:
-	$(TRIAL) tests
-
-coverage:
-	$(TRIAL) --coverage tests
+	env/bin/trial tests
 
 flakes:
-	$(PYFLAKES) txmongo
+	-env/bin/pyflakes txmongo
 
 pep8:
-	$(PEP8) --ignore=E501 -r txmongo
+	-env/bin/pep8 --ignore=E501 -r txmongo
 
 
 .PHONY: env docs
