@@ -83,7 +83,7 @@ else:
 
 setup(
     name="txmongo",
-    version="0.3",
+    version="0.3.1",
     description="Asynchronous Python driver for MongoDB <http://www.mongodb.org>",
     author="Alexandre Fiori",
     author_email="fiorix@gmail.com",
