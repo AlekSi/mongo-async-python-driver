@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 
 import sys
-import os
-import shutil
 
 from setuptools import setup
 from setuptools import Feature
-from distutils.cmd import Command
 from distutils.command.build_ext import build_ext
 from distutils.errors import CCompilerError
 from distutils.errors import DistutilsPlatformError, DistutilsExecError
@@ -57,7 +54,8 @@ although they do result in significant speed improvements.
         if sys.version_info[:3] >= (2, 4, 0):
             try:
                 build_ext.build_extension(self, ext)
-            except build_errors:
+            except build_errors, e:
+                print e
                 print self.warning_message % ("The %s extension module" % ext.name,
                                               "Above is the ouput showing how "
                                               "the compilation failed.")
