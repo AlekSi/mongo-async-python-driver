@@ -71,7 +71,9 @@ c_ext = Feature(
                             include_dirs=['txmongo/_pymongo'],
                             sources=['txmongo/_pymongo/_cbsonmodule.c',
                                      'txmongo/_pymongo/time_helpers.c',
-                                     'txmongo/_pymongo/encoding_helpers.c'])])
+                                     'txmongo/_pymongo/encoding_helpers.c'],
+                            data_files=['txmongo/_pymongo/time_helpers.h',
+                                        'txmongo/_pymongo/encoding_helpers.h'])])
 
 if "--no_ext" in sys.argv:
     sys.argv = [x for x in sys.argv if x != "--no_ext"]
